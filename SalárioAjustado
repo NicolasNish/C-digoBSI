@@ -1,1 +1,28 @@
+#include <stdio.h>
 
+int main(void) {
+  int numeroAulas;
+  float horaAula, salarioBruto, impostoDeRenda, inss, salarioLiquido;
+
+  printf("Informe o valor da hora aula: \n");
+  scanf("%f", &horaAula);
+  printf("Agora informe a quantidade de aulas ministradas: ");
+  scanf("%d", &numeroAulas);
+
+  salarioBruto = horaAula * numeroAulas;
+  
+  printf("Informe o imposto de renda (em %) que será descontado do seu salário bruto: \n");
+  scanf("%f", &impostoDeRenda);
+  
+  printf("Informe o INSS (em %) que será descontado do seu salário bruto: \n");
+  scanf("%f", &inss);
+
+  inss = (inss * salarioBruto)/100;
+  impostoDeRenda = (impostoDeRenda * salarioBruto)/100;
+  salarioLiquido = salarioBruto - inss - impostoDeRenda;
+  
+  printf(" Seu salário líquido, a partir dos dados informados e dos descontos aplicados, é de: %0.2f", salarioLiquido);
+  
+  
+  return 0;
+}
