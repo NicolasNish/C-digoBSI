@@ -1,0 +1,520 @@
+#include <stdio.h>
+  int inicio, personagem, vidas = 3;
+
+
+//acordando da hipnose
+int hipnose(){
+  int resposta;
+  do{
+  printf("\nPara acordar a seguinte questão você precisa acertar: 10×6+6/2-53=?\n");
+    printf("VOCÊ TEM %d VIDAS\n", vidas);
+    
+    scanf("%d", &resposta);
+    
+    if (resposta != 10) {
+      vidas=vidas-1;
+    }
+    if (vidas<=0) {
+      printf("GAME OVER");
+    }
+  } while (resposta != 10);
+  return resposta;
+}
+
+//saindo da prisão
+void saida(){
+  int fuga;
+  printf("Uma das madeiras pegou nas partes mais doloridas dele e ele apenas se contorce de tanta dor não conseguindo fazer mais nada. Agore pense em como sair de lá: \n1-Procure as saídas. \n2-Obrigue o hipnotizador a falar. \n3-Vasculhe pelo local\n");
+  do{
+    printf ("Resposta: ");
+    scanf("%d", &fuga);
+  if (fuga == 1){
+    printf("Todas as saídas estão trancadas às 7 chaves e não é possível sair de lá. Apenas o hipnotizador sabe onde estão as chaves. Mais sorte na próxima jogada...\nGAME OVER");
+  } else if(fuga == 2){
+    printf("O hipnotizador é quem obriga as pessoas a falarem e não o contrário, mas ele estava bem machucado e dolorido então contou onde estariam as chaves e logo você as achou e saiu de lá o mais rápido possível. \nFIM");
+  } else if(fuga == 3){
+    printf(" Vasculhando pelo local você não achou as chaves, mas achou um objeto muito mais interessante: uma arma plasmática, capaz de derreter qualquer metal, inclusive o da porta que a prende. Portanto, Merida saiu de lá com uma arma plasmática e alguns traumas de brinde. \nFIM");
+  }
+  } while (fuga<1 || fuga >3);
+}
+
+//sono do hipnotizador
+void vinganca(){
+  int sono;
+  printf("O hipnotizador está dormindo, pense no que você deve fazer: \n1-Pule em cima dele. \n2-Corra até a saída mais próxima\n");
+  scanf("%d", &sono);
+  do{
+    printf ("Resposta: ");
+  if(sono == 1){
+    saida();
+  } else if(sono == 2){
+    printf("Todas as saídas estão trancadas às 7 chaves e não é possível sair de lá. Ao se movimentar você fez muito barulho e acordou o hipnotizador que não gostou do que você fez. Boa sorte na próxima jogada...\nGAME OVER");
+  }
+  } while (sono < 1 || sono > 2);
+}
+
+//questão para ter um bom tempo
+void questao2(){
+  int resposta;
+  printf("Tempo ok. Para ter sucesso responda certo: o quadrado dos catetos é...\n1-O quadrado da soma dos catetos.\n2-O quadrado da hipotenusa.\n3-O quadrado do cosseno do ângulo\n");
+  do{
+  scanf("%d", &resposta);
+  if (resposta != 2){
+    vidas=vidas-1;
+    printf("VOCÊ TEM %d VIDAS\n", vidas);
+  }
+  if (vidas<=0) {
+      printf("GAME OVER");
+  }
+  } while (resposta != 2);
+  vinganca();
+}
+
+//tempo para atacar
+void momento(){
+  int tempo;
+  printf("Digite um tempo (em horas) para Merida esperar...");
+  scanf("%d", &tempo);
+  if (tempo > 40){
+    printf("Morte por fome\nGAME OVER");
+  } else if(tempo < 0){
+    printf("Você não pode voltar no tempo...");
+  } else if (tempo == 4){
+    printf("Tempo perfeito, o melhor momento para pegar o hipnotizador enquanto ele estiver dormindo");
+    vinganca();
+  } else {
+    questao2();
+  }
+}
+
+//pós hipnose
+void hipnotizador(){
+  int hipnose;
+  printf("Humm, Merida está acordando e se depara com o hipnotizador na sua frente e ela está amarrada em uma cadeira, o que será que ele vai fazer com ela? Pense rápido: \n1-Pule com a cadeira no chão para quebra-la e fugir.\n2-Finja que ainda está desmaiada até pensar em algo mais engrnhoso.\n3-Grite pelo seu socorro.\n");
+
+  do{
+  printf("Resposta: ");
+  scanf("%d", &hipnose);
+  
+  if (hipnose == 1) {
+    printf("Brutal!!! Quebrou a cadeira, pena que o hipnotizador viu e não deu tempo de você se desamarrar. Ele acabou lhe hipnotizando novamente sem chances de voltar...\nGAME OVER");
+  } else if (hipnose == 2){
+    printf("MUITO BEM, O hipnotizador não consegue identificar quando suas vítimas estão hipnotizadas então você fingiu bem e está apenas esperando o momento certo para contra atacar, mas qual seria esse momento?");
+    momento();
+  } else if(hipnose == 3){
+    printf("- SOCORRO!!! SOCORRO!!!\n Infelizmente ninguém vem lhe socorrer, você já foi socorrida pelo hipnotizador gastando a sua cota de “sorte” do dia\nO pior disso tudo é o que o mesmo acabou de ver que você acordou e lhe colocará em uma hipnose mais profunda incapaz de voltar a realidade.\nGAME OVER");
+  }
+  } while (hipnose < 1 || hipnose > 3);
+}
+
+//recebeu ajuda mas não era a melhor delas
+void questao(){
+  
+  
+ printf("- SOCORRO!!! SOCORRO!!!\nPuxa que sorte Encantado, o hipnotizador lhe ouviu e em um segundo entendeu tudo. Juntos vocês conseguiram derrotar a bruxa e em seguida a fera.\n Porém, apesar de Encantado ter sido muito bondoso ele não gosta de trabalhos solidários e..e..e...você...acaba..desma...iando");
+  
+  hipnose();
+  
+  hipnotizador();
+  
+}
+
+//fera e bruxa juntos?
+  void encurralada(){
+    int encrenca;
+     printf("Você escolheu esperar e pôde perceber que a fera apresenta umas marcas nela que lhe lembram encantamentos, quase que runas, de proteção. Você então percebe que há alguém por trá disso tudo: uma bruxa. Ao fim deste raciocínio uma mulher começa a rir, a mulher que estava lá fora parecendo uma sobrevivente. Ela é a bruxa! Você está numa encrenca... O que você pode fará?\n1-Pedir a misericórdia da bruxa.\n2-Acertá-la usando seu arco e flecha. \n3-Gritar por socorro.\n");
+
+    do{
+    printf("Resposta: ");
+    scanf("%d", &encrenca);
+    if (encrenca == 1){
+      printf("Bruxas não têm misericórdia então você vai acabar sofrendo nas mãos dela. Só Deus sabe o que vai acontecer com você...\nGAME OVER");
+    } else if(encrenca == 2){
+      printf("A fera é da bruxa e ela o controla ao ponto que quando você se prepara para atirar a fera lhe ataca e...\nGAME OVER");
+    } else if(encrenca == 3){
+      questao();
+    }
+    } while(encrenca < 1 || encrenca > 3);
+  }
+
+
+//a bruxa e a fera estão juntos
+void ajuda(){
+  int socorro;
+  printf("Você já tinha escolhido lutar e agora que escolheu novamente você já está preparada e vai conseguir se defender bem, mas todo golpe que você dá a fera desvia ou se defende como se fosse uma proteção mágica, então você percebe que há bruxaria por trás disso tudo. O que fazer?\n1-Procurar abrigo. \n2-Pedir ajuda\n");
+  do{
+  printf("Resposta: ");
+      scanf("%d", &socorro);
+  if (socorro == 1){
+    printf("Só há uma entrada e saída e ambas estão barradas respectivamente pela fera e pela bruxa. \nNão há escapatória. \nGAME OVER");
+  } else if(socorro == 2){
+    questao();
+  }
+  } while(socorro < 1 || socorro > 2);
+}
+
+
+int galho(int fera){
+  int barulho;
+  printf("OPS...Você pisou em um galho, tropeçou, fez um barulho que acordou a fera é correr ou lutar: \n1-Corra! \n2-Lute!\n");
+  do{
+  printf("Resposta: ");
+    scanf("%d", &barulho);
+    if(barulho == 1){
+      printf("Se ficar o bicho come, se correr o bicho pega. Você correu e o bicho pegou. \nFIM DE JOGO");
+    } else if(barulho == 2 && fera == 1){
+      ajuda();
+    } else if(barulho == 2 && fera == 2){
+      printf("Você tinha escolhido fugir e agora quer lutar? Infelizmente você não está preparado para esta batalha, ainda mais contra uma fera mágica. \nPra você é GAME OVER");
+    }
+    
+    } while (barulho < 1 || barulho > 2);
+  return 0;
+}
+
+//a fera está dentro do monumento
+void historia6(){
+  int fera;
+   printf("Ao entrar no monumento você se depara com a fera lá dentro. Ela estava dormindo e por isso não fazia barulho. Está na hora de decidir: \n1-Pegue sua espada e mate a fera.\n2-Fuja e procure uma ajuda/reforços. \n3-Analise o seu inimigo.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &fera);
+  if(fera == 1 || fera == 2){
+    galho(fera);
+  } else if(fera == 3) {
+   encurralada();
+  }
+  } while (fera < 1 || fera > 3);
+}
+
+
+//encontrou um monumento
+void historia5(){
+  int monumento;
+  
+printf("Procurando por uma nova pista você encontra um monumento que aida está em pé. Será que vale a pena ir até lá para investigar?\n1-Melhor não ir até lá. \n2-Melhor ir até lá.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &monumento);
+  if(monumento == 1){
+    printf("A poeira está muito forte e você se sente na necessidade de procurar um abrigo então você resolve entrar mesmo assim no monumento. ");
+  }
+ historia6();
+  } while (monumento < 1 || monumento > 2);
+}
+
+
+//luta final
+void luta(){
+  int desafio;
+  printf("Muito bem! Em todas as possíveis realidades você só ganhou da fera acompanhado de alguém. Portanto acompanhado do hipnotizador será possível ganhar da fera e da bruxa.\nPara vencer esta batalha acerte a charada: “O que é, o que é... qual o limite de 1/x quando x tende a 0?”\n1-0\n2-(+∞)\n3-(-∞)\n4-não existe\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &desafio);
+  } while(desafio < 1 || desafio > 4);
+  if (desafio == 4){
+    printf ("PARABÉNS VOCÊ GANHOU");
+  } else {
+    do {
+    printf ("VOCÊ ERROU");
+      
+    vidas=vidas-1;
+    
+    printf("VOCÊ TEM %d VIDAS\n", vidas);
+    
+    scanf("%d", &desafio);
+    
+    if (vidas<=0) {
+      printf("GAME OVER");
+    }
+    } while (desafio != 1);
+  }
+  
+}
+
+//charada para chegar na fera
+void charada(){
+  int charada;
+    printf("- Bom trato! - o hipnotizador disse, entretanto um rapaz sorrateiro que vê muito além das boas intenções sabe o que fazer para trapacear.\nJuntos vocês são imbatíveis. Rapidamente conseguiram encontrar novas pistas que relacionavam a fera com uma bruxa e quando se tem um manipulador mental e uma guerreira imbatível as coisas ficam mais fáceis.\n Já nas últimas pistas para chegar até a fera, vocês recebem a seguinte charada: “Para a fera você derrotar muito mais do que espadas você vai precisar, entretanto antes você precisa saber, que junto da fera há um novo ser e para a fera você achar...”\nComplete:\n1-“...um mundo novo há de encontrar”\n2-“...acompanhado de alguém você deve estar”\n3-“...pelo norte você deve caminhar”\n");
+  do{
+    printf("Resposta: ");
+    scanf("%d", &charada);
+  } while (charada < 1 || charada > 3);
+  
+  if(charada == 1 || charada == 3){
+  do {
+    vidas=vidas-1;
+    
+    printf("VOCÊ TEM %d VIDAS\n", vidas);
+    
+    scanf("%d", &charada);
+    
+    if (vidas<=0) {
+      printf("GAME OVER");
+    }
+    } while (charada == 1 || charada == 3);
+  } else if (charada == 2){
+    luta();
+  }
+  
+}
+
+//trato com o hipnotizador
+void trato(){
+  int acordo;
+
+  printf("Está difícil o seu caso. Poucas pessoas viram a fera, então é como se você voltasse para a estaca zero, mas no último sopro esperança você conheceu um rapaz chamado encantado, conhecido como o hipnotizador. Ele não sabia muito sobre a fera, mas sabia que muitos estavam atrás da recompensa. Ele fez um trato com você para ambos se ajudarem e se encontrarem dividirem o prêmio entre si. Você aceita o trato?\n1-Não aceito o trato. \n2-Aceito o trato.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &acordo);
+  } while (acordo < 1 || acordo > 2);
+  if (acordo == 1){
+    printf("Ninguém nega um trato do hipnotizador. Ele não gostou disso e em um piscar de olhos você foi hipnotizada");
+      do{
+  hipnose();
+  
+  } while (hipnose() != 10);
+  hipnotizador();
+  } else if (acordo == 2){
+    charada();
+  }
+}
+
+//procurando por dicas
+void dicas(){
+  int pista;
+  printf("Ao chegar perto da bruxa para ver se ela realmente morreu, você acha que ela morreu porém ela está lhe enganando. Na verdade a bruxa é quem está por trás da fera, só que você não sabe disso ainda, então resolve continuar atrás da fera...\nNo dia seguinte, você precisa decidir o que fazer:\n1-Voltar ao lugar do massacre.\n2-Procurar outra pista.\n3-Perguntar se alguém viu a fera.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &pista);
+  } while (pista < 1 || pista > 3);
+  if(pista == 1){
+    printf("A bruxa já esperava que você voltasse, então armou uma armadilha que você caiu direitinho. A “fera” estava lá lhe esperando e foi tão fácil lhe pegar...\nGAME OVER");
+  } else if(pista == 2 || pista == 3){
+    trato();
+  } 
+}
+
+//pós ataque da bruxa e seu contra ataque
+void solucao(){
+  int solucao;
+  printf("Você nunca erra uma flecha, com a intensidade do azar que você recebeu sua flecha passou raspando pela bruxa ao ponto dela cair e peder a linha do encantamento. O céu volta ao normal, tudo parece se clarear novamente, depois de uma aventura dessas o que seria o melhor a fazer?\n1-Voltar para casa. \n2-Procurar mais dicas sobre a fera. \n3-Ver se a bruxa realmente morreu.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &solucao);
+  }while(solucao < 1 || solucao > 3);
+  if (solucao == 1){
+    printf("Voltando para casa, você voltará a sua vida normal, sem emoção, mas segura. Sem dinheiro no bolso, mas com vida.\nFIM DE JOGO.");
+  } else if(solucao == 2){
+    historia5();
+  } else if(solucao == 3){
+    dicas();
+  }
+}
+
+//a sobrevivente era uma bruxa
+void historia4(){
+  int azar;
+   printf("- Olá senhora, tudo bem? \n- Tudo bem?!? Acabei de perder meus familiares por causa de uma fera horrenda e você vem me perguntar tudo bem? Sabe o que eu deveria fazer? Lançar logo um feitiço que acabe com tudo de uma vez por todas.\nA sobrevivente era uma aprendiz de bruxa e achava que podia tudo. Apesar de ser uma aprendiz ela já sabia conjurar alguns feitiços de cabeça. Merida a pegou em um momento muito delicado e sofreu as consequências do ato. A aprendiz estava conjurando um feitiço de azar a todo ser que respire, o que Merida não sabia é que ela seria a primeira a receber esse feitiço em sua maior intensidade \nBom azar daqui pra frente...");
+   printf("\nO CÉU ESTÁ PRETO, OS BICHOS ESTÃO MALUCOS, OUVEM-SE GRITOS. VOCÊ DEVE FAZER ALGUMA COISA E RÁPIDO:\n1-Pegue a espada e se defenda de tudo o que estiver perto de você. \n2-Corra, procurando um único ponto de luz. \n3-Acerte a bruxa com seu arco e flecha.\n");
+  do{
+    printf("Resposta: ");
+    scanf("%d", &azar);
+  } while(azar < 1 || azar > 3);
+    if(azar == 3) {
+      solucao();
+    } else{
+      printf("Não há luz para se guiar, você não enxerga nada... \nFIM DE JOGO");
+    }
+}
+
+//conhecendo uma sobrevivente
+void historia3(){
+  int sobrevivente;
+  printf("Uii essa garota tá que tá. Saiu e fechou a porta na cara do pai. “Quando voltar vai estar encrencada” ele disse. É o que veremos então.\nMerida pensou “Por onde devo começar??”. Devido a sua grande experiência foi procurar pelos últimos lugares em que a fera passou. O vilarejo de Burkingman, o último lugar pelo qual a fera passou. Um local completamente devastado, muitos corpos mortos e poeira por todo o lugar. Por sorte, Merida achou uma sobrevivente caída em meio aos escombros. Será que ela deve perguntar para achar dicas?\n1-Falar com a sobrevivente. \n2-Procurar outra pista.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &sobrevivente);
+  } while (sobrevivente < 1 || sobrevivente > 2);
+  if (sobrevivente == 1){
+   historia4();
+  } else if(sobrevivente == 2){
+    historia5();
+  }
+}
+
+//Decisão de brigar ou não com o pai
+void historia2 (){
+  int paiFilha;
+  printf("Muito bem, Merida gosta de aventuras e vai se aventurar nessa nova caçada. Pega suas espadas, seu arco e flecha e ao dar o primeiro passo para sair de casa, escuta a voz do seu pai a proibindo de sair, pois ele não gosta que sua filha saia mundo afora arriscando a sua vida. O que Merida deve fazer: \n1-Continuar andando sem se importar com a opinião do seu pai. \n2-Ficar e discutir com o seu pai\n");
+
+  do{
+    printf("Resposta: ");
+  scanf("%d", &paiFilha);
+  }while (paiFilha < 1 || paiFilha > 2);
+  if(paiFilha == 1){
+    historia3();
+    
+  } else if (paiFilha == 2) {
+    printf("Oh não! Você ficou de castigo. Apesar de ser maior de idade você é dependente psicologicamente do seu pai e não conseguirá brigar com ele, portanto ficará em casa.");
+  }
+}
+
+//Decisão de ir ou não atrás da fera
+void historia1 (){
+  int fera1;
+  printf("Era uma vez, uma jovem chamada Merida que estava se preparando para a sua caçada. Ela era uma moça que a aparência enganava, pois apesar de ser nova era uma grande guerreira da sua vila. Ela ouviu no noticiário que uma nova fera está aterrorizando os vilarejos e uma recompensa seria dada pela sua cabeça. \nMerida se sentiu desafiada a encontrar e atacar esta fera. Será que ela deve ir? \nDecida:\n1-Merida deve ir atrás da fera.\n2-Merida deve desistir dessa ideia e aproveitar o seu dia.\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &fera1);
+  } while (fera1 < 1 || fera1 > 2);
+  if(fera1==1){
+    historia2();
+  } else {
+    printf("Já que não há fera para atacar então Merida foi aproveitar o seu dia ao lado de sua família vivendo mais um dia normal, na sua vida normal.\nFim de jogo.");
+  }
+}
+
+//sono do hipnotizador
+void despedida (){
+  
+  int sair;
+  
+      printf("Após cair no sono, em um piscar de olhos, Merida aparece em cima de você ainda amarrada na cadeira, usando toda a força que tem sobre a cadeira ao ponto que a dor é imensa. Você apenas se contorce de dor, o que você queria era apenas que essa dor parasse, mas ao mesmo tempo o que você queria era sentir dor, se despedindo do mundo com o trabalho bem feito.\nAo acordar após desmaiar de tanta dor você ainda sente que está dolorido mas ao procurar por Merida não a acha mais... Ela deve ter dado um jeito de sair. Será que ele deve ir atrás dela?\n1-Ir atrás dela\n2-Não ir atrás dela\n");
+  scanf("%d", &sair);
+  printf("Não há vontade de ir até ela. O motivo pelo qual ele havia se esforçado tanto refletia na sua infância, ao ficar ali esperando pelo seu fim poderia ter a certeza de que ficou marcado na história mesmo que por outros fins...\nFIM");
+  
+}
+
+//luta do hipnotizador e Merida contra a fera e a bruxa
+void fim(){
+  int decisao;
+  printf("Ele a ajuda. Para a sua surpresa a bruxa ainda estava viva e estava junto da fera, mas com a ajuda de Merida ambos conseguem derrotar a bruxa e a fera. Só que ao finalizar a batalha ele lembra que o motivo era fazer Merida sofrer, então a hipnotiza, como uma pena, a leva para seu covil, a amarra e começa a pensar no que vai fazer. Decida:\n1-Continuar planejando\n2-Ir dormir\n");
+  
+  do{
+    printf("Resposta: ");
+  scanf("%d", &decisao);
+  }while(decisao < 1 || decisao > 2);
+    
+    while(decisao == 1){
+    printf("Pensando...\n");
+    scanf("%d", &decisao);
+    }
+  despedida();
+}
+
+//hipnotizando a bruxa
+void ajudinha(){
+  int ajuda;
+  printf("...ele a hipnotiza, de longe mesmo, para que pare com o feitiço, porém não consegue impedi-la sozinho, mas quando menos espera, a Merida, que tanto desprezava atira uma flecha que é capaz de desestabilizar a bruxa e conseguir para-la. Ele se sente estranho, pois queria o mal dela, mas então a vê indo para um monumento e começa a escutar uns gritos...Oh não a fera está lá, mas ele não se importa com ela, ele na verdade quer que ela sofra, mas ele começa a ouvir um pedido de socorro, será que ele deve ajudá-la?\n1-Ajude\n2-Não ajude\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &ajuda);
+  } while(ajuda < 1 || ajuda > 2);
+  if(ajuda == 1){
+    fim();
+  } else if(ajuda == 2){
+    printf("Ele escuta a Merida sofrendo e não se importa com ela, na verdade sente que o seu trabalho foi bem feito. O que ela tinha de sofrer sofreu.\nFIM");
+  }
+}
+
+//vendo Merida e seu pai
+void hist(){
+    int dor;
+    printf("Para se distrair um pouco ele resolve passear e para sua surpresa chega na casa de Merida. Se depara com o pai dela muito bravo, mas ao mesmo tempo triste com a saída da filha. Esse momento lhe lembrou a sua infância cheia de brigas e intrigas, a ausência de amor mesmo. Esse amor desprezado pela Merida o indignou ao ponto dele querer que ela sinta a verdadeira dor de ser desprezada, voltou a ele o sentimento de vingança que lhe faltava. Então ao ir atrás de Merida ele a vê conversando com uma bruxa e se pergunta se ela é maluca. Ao ver que a bruxa está lançando um feitiço ele...\n1-A hipnotiza\n2-Deixa pra lá\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &dor);
+  } while(dor < 1 || dor > 2);
+  if (dor == 1){
+    ajudinha();
+  } else if(dor == 2){
+    printf("Ao deixar pra lá ele vê Merida lutando mas em vão, a maior “bomba” de azar foi sobre ela e não há como evitar o pior. Voltando para o seu covil Encantado percebe que o feitiço que a bruxa havia lançado era um de azar e logo mais o mundo viraria um caos...\nFIM DE JOGO\n");
+  }
+}
+
+//história de Encantado
+void suicidio(){
+  int morte, dor;
+  printf("Encantado adotado por pais de casais diferentes, teve casos de abuso que ficaram encrustados em seu coração. Ao crescer para todos os traumas ele buscou vingança ao ponto que virou uma pessoa amargurada, que não via mais felicidade em nada, e agora não vê mais prazer em viver. Ele vê uma possível saída no suicídio. Será que ele deve se suicidar?\n1-Sim\n2-Não\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &morte);
+  } while (morte < 1 || morte > 2);
+  if (morte == 1){
+    printf("FIM DE JOGO");
+  } else if(morte == 2){
+    hist();
+}
+}
+
+//Encantado conhecendo o pai de Merida
+void amor(){
+  int dor;
+  printf("Encantado então vai atrás de Merida para conhecê-la melhor. Ao chegar na casa dela se depara com o pai muito bravo, mas ao mesmo tempo triste com a saída da filha. Esse momento me lembrou a sua infância cheia de brigas e intrigas, a ausência de amor mesmo. Esse amor desprezado pela Merida o indignou ao ponto dele querer que ela sinta a verdadeira dor de ser desprezada. Então ao ir atrás de Merida ele a vê conversando com uma bruxa e se pergunta se ela é maluca. Ao ver que a bruxa está lançando um feitiço ele...\n1-A hipnotiza\n2-Deixa pra lá\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &dor);
+  } while (dor < 1 || dor > 2);
+  if (dor == 1){
+    ajudinha();
+  } else if(dor == 2){
+    printf("Ao deixar pra lá ele vê Merida lutando mas em vão, a maior “bomba” de azar foi sobre ela e não há como evitar o pior. Voltando para o seu covil Encantado percebe que o feitiço que a bruxa havia lançado era um de azar e logo mais o mundo viraria um caos...\nFIM DE JOGO\n");
+  }
+}
+
+//Infância de Encantado
+void encanto(){
+  int historia;
+  printf("Encantado era um hipnotizador que vivia em sua masmorra à procura de novos desafios todos os dias. Através da hipnose ele conseguia manipular as pessoas. Fruto de uma infância cruel, Encantado encontrou conforto nessa manipulação mental e se tornou um expert nisso. O que poucos sabiam era que o prazer que ele tinha pela vida já havia se esvaído. Ele já estava cansado de tudo, sentia que sua vida era muito monótona e que já havia conquistado tudo o que almejava.\nComo bom fofoqueiro ele já sabia que havia uma fera massacrando vilas, mas além disso, a guerreira Merida estava atrás desta fera. Será que ele deveria olhar melhor essa história?\n1-Sim\n2-Não\n");
+  do{
+    printf("Resposta: ");
+  scanf("%d", &historia);
+  } while (historia < 1 || historia > 2);
+  if (historia == 1){
+    amor();
+    
+  } else if(historia == 2){
+    suicidio();
+  }
+}
+
+//escolha do personagem
+void nomeDoPersonagem (){
+  personagem = 0;
+  printf("Escolha o seu personagem: \n1-Merida, a rainha das espadas e das flechas\n2-Encantado, o hipnotizador\n");
+  while (personagem > 2 || personagem < 1) {
+  scanf("%d", &personagem);
+    if(personagem > 2 || personagem < 1){
+      printf ("Valor inválido\n");
+    }
+}
+  if (personagem == 1){
+  printf("A personagem escolhida foi: Merida.\n");
+    historia1();
+} else if (personagem == 2) {
+  printf("O personagem escolhido foi: Encantado.\n");
+    encanto();
+}
+  
+}
+
+//inicialização do jogo
+int main () {
+do{
+  
+  printf("Olá, seja muito bem vindo ao Incrível Mundo das Histórias Cruzadas! Neste mundo você vai imergir nas magias de bruxas, nas assombrações de feras, no encantamento de hipnotizadores e até nas flechas dos guerreiros. \nNão se esqueça de tomar muito cuidado com suas ações, um pé em falso e será declarado GAME OVER para você.\nPara iniciar o jogo tecle 1 e  para finalizar o jogo tecle 0 \n");
+  scanf("%d", &inicio);
+
+  if (inicio == 0){
+    printf("End Game\n");
+  } else if (inicio == 1){
+    printf("Starting the game\n");
+    
+    nomeDoPersonagem();
+  }
+    
+  }while (inicio != 1 && inicio != 0);
+  
+  return 0;
+}
